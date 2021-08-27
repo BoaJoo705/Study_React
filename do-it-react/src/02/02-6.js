@@ -29,18 +29,20 @@ Shape.prototype = {
 var s = new Shape(0, 0);
 s.area(); // 0
 
+
+// 자식 클래스(Circle) 생성
 function Circle(x, y, radius) {
-    Shape.call(this, x, y);
+    Shape.call(this, x, y);      // 내장함수 call() -> 부모의 생성자 호출하여 초깃값 상속
     this.name = 'Circle';
     this.radius = radius;
 }
-Object.assign(Circle.prototype, Shape.prototype, {
+Object.assign(Circle.prototype, Shape.prototype, {      // 부모 클래스 함수 상속
     area: function () {
         return this.radius * this.radius;
     }
 });
 
-var c = new Circle(0, 0, 0);
+var c = new Circle(0, 0, 10);
 c.area(); // 100
 
 
@@ -62,7 +64,7 @@ class Shape {
 var s = new Shape(0, 0);
 s.area(); //0
 
-class Circle extends Shape {
+class Circle extends Shape {       // Shape 클래스 상속
     constructor(x, y, radius) {
         super(x, y);
         this.radius = radius;
@@ -73,4 +75,4 @@ class Circle extends Shape {
     }
 }
 var c = new Circle(0, 0, 10);
-c.area(); //100
+c.area(); // 100
